@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
+#include <ctype.h>
+
+//#ifndef stringlibdomlinecount
+//#define stringlibdomlinecount 0
+//#endif
+
+struct Str * createstring(char * instring);
+void destroystring(struct Str* instring);
+
+struct Document * createdocument();
+
+int isalphachar(struct Str* instring);
+int isalphasentence(struct Str* instring);
+void tolowercase(struct Str* instring);
+int* contains(struct Str* instring, struct Str* letter);
+int equals(struct Str * instring, struct Str * instringtwo);
+int indexof(struct Str * instring, struct Str* letter);
+char * startat(struct Str * instring, int postion);

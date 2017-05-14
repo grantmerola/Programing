@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--Comment-->
+<html lang="eng">
+	<head>
+        <meta charset="utf-8">
+		<title>
+		  Gradebook
+		</title>
+		<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="Gradebook.css">
+		<script type="text/javascript" src="Gradebook.js"></script>
+	</head>
+
+	<body>
+		<h1>Gradebook</h1>
+		<div id="entryfield">
+			<p>First Name:</p>
+			<input id="firstname"><br>
+			<p>Last Name:</p>
+			<input id="lastname"><br>
+			<p>Grade:</p>
+			<input id="gradename" type="number"><br>
+			<button onclick="addstudent()">Add</button>
+		</div>
+		<div id="gradetable">
+			<table>
+				<thead>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Grade</th>
+				</thead>
+				<tbody id="tbody">
+				</tbody>
+			</table>
+		</div>
+		<div id="etc">
+			<p>Sort By:</p>
+			<input type="radio" name="sort" value="firstname" onclick="sortby('fn')">First Name<br>
+			<input type="radio" name="sort" value="lastname" onclick="sortby('ln')">First Last<br>
+			<input type="radio" name="sort" value="grade" onclick="sortby('g')">Grade<br>
+			<p id="average"></p>
+			<p id="max"></p>
+			<p id="min"></p>
+		</div>
+	</body>
+</html>

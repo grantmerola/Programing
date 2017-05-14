@@ -1,0 +1,73 @@
+article, aside, figure, footer, header, nav, section {
+    display: block;
+}
+html{
+    background-image: url("../images/bats.gif");
+}
+body{
+    font-family: sans-serif;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: solid black;
+    box-shadow: 5px 5px 10px black, -5px -5px 10px black; 
+    
+}
+header h2{
+    font-size: 20px;
+    margin-top: 5px;
+}
+#pumkin {
+    float: left;
+    margin-right: 10px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+h2{
+    font-size: 24px;
+}
+#st:first-letter{
+    font-size: 40px;
+}
+a:link, a:visited{
+    color: orange;
+}
+
+a:hover, a:active{
+    color:green;
+}
+footer{
+    text-align: center;
+    font-size: 12px;
+    border-top: solid black;
+    background: linear-gradient(45deg, black, orange, white), orange; 
+    clear: both;
+    padding-bottom: 1px;
+}
+ul{
+    line-height: 30px;    
+}
+header{
+    border-bottom: solid black;
+    background: linear-gradient(45deg, white, orange, black), orange;
+    padding-top: 10px;
+}
+#nav{
+    float: left;
+    width: 175;
+    padding: 10px;
+    height: 540px;
+    margin-right: 10px;
+}
+h1{
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+p{
+    margin-right: 40px;
+}
+/*.main{
+}burn in fire css alignment*/
+

@@ -1,0 +1,4 @@
+This entire directory is a test ground for "find_script"
+if you mess with it the test will not be right 
+I suggest runing test_suite.sh/.ps1 it will output all the tests
+or just use "find_script" however you like in another directory and if you run into problems look at the tests 

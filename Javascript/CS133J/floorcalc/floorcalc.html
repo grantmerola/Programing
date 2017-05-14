@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--Comment-->
+<html lang="eng">
+	<head>
+        <meta charset="utf-8">
+		<title>
+		  Flooring Calculator
+		</title>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+		<script type="text/javascript" src="foorcalc.js"></script>
+	</head>
+
+	<body>
+        <h1>Flooring Calculator</h1>
+		<form>
+			<p class="form1elm">Enter Room Length (ft)</p>
+			<input type="number" id="length" class="form1elm"><br>
+			<p class="form1elm">Enter Room Width (ft)</p>
+			<input type="number" id="width" class="form1elm"><br>
+			<p class="form1elm">Percent allowence for room irregularities (0%-20%)</p>
+			<input type="number" id="percent" class="form1elm" max="20"><br>
+			<p id="infeet" class="form1elm">Amount needed in feet</p>
+			<textarea rows="1" cols="50" id="feetreturn" readonly class="form1elm"></textarea><br>
+			<p class="form1elm">Amount needed in yards</p>
+			<textarea rows="1" cols="50" id="yardreturn" readonly class="form1elm"></textarea><br>
+			<button type="button" id="calc" class="form1elm" onclick="calcfunc ()">Calculate</button>
+			<button type="button" id="clear" class="form1elm" onclick="clearfunc ()">Clear</button>
+		</form>
+	</body>
+</html>

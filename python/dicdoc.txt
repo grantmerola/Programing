@@ -1,0 +1,88 @@
+print : spits the following string out in the console
+
+# : indicates that that line is a comment
+
++ : addition symbol (Note: works for text and numbers)
+
+- : subtraction symbol 
+
+/ : division symbol and slash 
+
+* : multiplication symbol 
+
+% : used for specifying variables in a string and for division with remainders?
+
+< : less than
+
+> : greater than
+
+<= : less than equal to
+
+>= : greater than equal to
+
+= : used to define variables
+
+_ : used instead of spaces every where except strings and comments 
+
+!= : not equal to
+
+== : equal to
+
++= : "x += 1 is the same as doing x = x + 1"
+
+{
+%s : used in string to indicate variable 
+
+%d : used in string to indicate variable                                    unsure of diff
+
+%r : used in string to indicate variable
+ 
+}
+
+" : used to define the beginning or end of a string
+
+""" : used at beginning or end of large strings 
+
+\n : new line                                                                            ?
+
+\t : tabs in                                                                             ?
+
+raw_input() : take user input in to console as variable or string
+
+from	import	: used to import modules from some place (at time of writing used for {sys, argv}{os.path, exists}
+
+argv : name of module that take initial input in console and translates it to variables
+
+exists : imported modual that checks the existence of a file 
+
+open() : used to open a file
+
+.read() : used to read the file given (Note: format seen is [file as variable].read)
+
+.close() : closes file (Note: same seen usage as .read will now be called dot file in note)
+
+.truncate() : truncates file meaning it deletes (Note: it can be set to leave parts not clear how)
+
+.write() : writes to the file must be in a file that was opened in write state {as in open(filename, 'w')}
+
+def : used to create and define function (Note: code related to is tabbed) [usage def var_name(var1, var2)
+
+.seek : used to find a byte place in a file (Note: 0 is beginning not sure how to find byte data otherwise [dot file])
+
+return : let you use a function result for things like variables make the function mean the result of it's processes  
+
+.readline : reads the current line out as a string (Note: unsure how to position[dot file]) 
+
+.pop() : pops of part of a text list (Note: parenthes used to determine postion [0 = first -1 = last word dot file]
+
+.split() : splits the words in a string [usage (' ')]
+
+and : results in false response unless double down on true
+
+or : results in true response unless double down on false
+
+not : reverses logic answer
+
+True : obv
+
+False : obv

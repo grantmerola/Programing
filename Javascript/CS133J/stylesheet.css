@@ -1,0 +1,33 @@
+body{
+    background-color: #088da5; 
+    font-family: 'Raleway', sans-serif;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+h1{
+    color: white;
+    font-family: inherit;
+    background-color: inherit;
+    text-align: center;
+}
+h2, h3{
+    color: white;
+    font-family: inherit;
+    background-color: inherit;
+    text-align: left;
+}
+a:link{
+    text-decoration: none;
+    color: #a52008; 
+}
+a:hover{
+    color: white;
+}
+a:visited{
+    color: #e5d4b0;
+    text-decoration: none;
+}
+a:visited:hover{
+    color: white;
+}

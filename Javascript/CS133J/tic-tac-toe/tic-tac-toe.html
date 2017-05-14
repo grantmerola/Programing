@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--Comment-->
+<html lang="eng">
+	<head>
+        <meta charset="utf-8">
+		<title>
+		 Tic-Tac-Toe
+		</title>
+		<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="tic-tac-toe.css">
+		<script type="text/javascript" src="tic-tac-toe.js"></script>
+	</head>
+
+	<body>
+        <h1>Tic-Tac-Toe</h1>
+       	<div>
+        <h2>Scoreboard</h2>
+        <p id="xwins">X Wins: 0</p>
+        <p id="owins">O Wins: 0</p>
+        <p id="draws">Draws: 0</p>
+        </div> 
+        <div>
+        	<button onclick="endturn()">End Your Turn</button>
+        </div>
+        <div id="deletable">
+        <div id="the x's">
+        	<div class="x" id="x1" draggable="true" ondragstart="letsdrag(event)">
+        		<h1 class="xtext">X</h1>
+        	</div>
+        	<div class="x" id="x2" draggable="true" ondragstart="letsdrag(event)">
+        		<h1 class="xtext">X</h1>
+        	</div>
+        	<div class="x" id="x3" draggable="true" ondragstart="letsdrag(event)">
+        		<h1 class="xtext">X</h1>
+        	</div>
+        	<div class="x" id="x4" draggable="true" ondragstart="letsdrag(event)">
+        		<h1 class="xtext">X</h1>
+        	</div>
+        	<div class="x" id="x5" draggable="true" ondragstart="letsdrag(event)">
+        		<h1 class="xtext">X</h1>
+        	</div>
+        </div>
+        <div id="theboard">
+        	<table>
+        		<tbody>
+        			<tr>
+        				<td class="box" id="box1" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        				<td class="box" id="box2" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        				<td class="box" id="box3" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        			</tr>
+        			<tr>
+        				<td class="box" id="box4" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        				<td class="box" id="box5" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        				<td class="box" id="box6" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        			</tr>
+        			<tr>
+        				<td class="box" id="box7" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        				<td class="box" id="box8" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        				<td class="box" id="box9" ondragover="candrop(event)" ondrop="beendroped(event)"></td>
+        			</tr>
+        		</tbody>
+        	</table>
+        </div>
+        </div>
+	</body>
+</html>

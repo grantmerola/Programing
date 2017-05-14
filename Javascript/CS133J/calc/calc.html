@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--Comment-->
+<html lang="eng">
+	<head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="calc.css">
+        <script type="text/javascript" src="calc.js"></script>
+		<title>
+		  Calcuator 
+		</title>
+	</head>
+
+	<body>
+        <h1>Calcuator</h1>
+        <div id="clacelm">
+                <textarea id="returnarea" readonly></textarea>
+                <div id="row1div">
+                        <button class="row1" id="7" onclick="seven()">7</button>
+                        <button class="row1" id="8" onclick="eight()">8</button>
+                        <button class="row1" id="9" onclick="nine()">9</button>
+                        <button class="row1" id="/" onclick="divide()">/</button>
+                </div>
+                <div id="row2div">
+                        <button class="row2" id="4" onclick="four()">4</button>
+                        <button class="row2" id="5" onclick="five()">5</button>
+                        <button class="row2" id="6" onclick="six()">6</button>
+                        <button class="row2" id="*" onclick="multiply()">*</button>
+                </div>
+                <div id="row3div">
+                        <button class="row3" id="1" onclick="one()">1</button>
+                        <button class="row3" id="2" onclick="two()">2</button>
+                        <button class="row3" id="3" onclick="three()">3</button>
+                        <button class="row3" id="-" onclick="subtract()">-</button>
+                </div>
+                <div id="row4div" >
+                        <button class="row4" id="=" onclick="equals()">=</button>
+                        <button class="row4" id="0" onclick="zero()">0</button>
+                        <button class="row4" id="." onclick="point()">.</button>
+                        <button class="row4" id="+" onclick="add()">+</button>
+                </div>
+                <button id="reset" onclick="reset()">Clear</button>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+.xtext{
+	font-size: 9em;
+	font-weight: bold;
+	color: black;
+	margin: 0px;
+}
+.x{
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+.otext{
+	font-size: 9em;
+	font-weight: bold;
+	color: black;
+	margin: 0px;
+}
+.o{
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+.box{
+	border: 2px;
+	border-color: black;
+	border-style: solid;
+	width: 200px;
+	height: 200px;
+}
+#theboard{
+	float: right;
+}

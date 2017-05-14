@@ -1,0 +1,33 @@
+/*list sheet*/
+/*body{
+    margin-left: 15%;
+    margin-right: 10%;
+}*/
+
+.things{
+    list-style-image: url(listImage/listImageThing.jpeg);
+    list-style-position: inside;
+
+}
+#book{
+    list-style-image: url(listImage/listImageBook.jpeg);
+    list-style-position: inside;
+
+}
+#movie{
+    list-style-image: url(listImage/listImageMovie.jpeg);
+    list-style-position: inside;
+
+}
+#music{
+    list-style-image: url(listImage/listImageMusic.png);
+    list-style-position: inside;
+
+}
+.spanish{
+    list-style:lower-roman;
+}
+
+.spanish li ol {
+    list-style: decimal-leading-zero;
+}

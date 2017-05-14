@@ -1,0 +1,45 @@
+find_script.ps1
+
+How to use:
+find_script look in all the files in the current directory. Note it does not look recursively in folders in the directory.
+-h for help.
+:run powershell : specify the script to be run : argument :         value      :   value
+   powershell         ./find_script.ps1             -s            24
+   											|	: size	  :       bytes
+   											|	
+   											|	:  -t     :       .ps1
+   											|	: type    :     file extention 
+   											|
+   											|	:  -c     :     hello
+   											|	: content :  string to serch for
+   											|
+   											|	:  -d     :     dupfile.txt
+   											|	: duplicate:  file to duplicate
+   											|
+   											|	:  -mv     :     movefile.txt   :  ./movetodir/
+   											|	: move file:  move this file to :  this directory 
+   											|
+   											|	:  -l c/s/t/d/mv:     
+   											|	: logging :   	Note. Logging can not be run by its self it requries other argument										
+Examples:
+powershell ./find_script.ps1 -s 24
+
+powershell ./find_script.ps1 -t .ps1
+
+powershell ./find_script.ps1 -c hello
+
+powershell ./find_script.ps1 -d dupfile.txt
+
+powershell ./find_script.ps1 -mv movefile.txt ./movetodir/
+
+powershell ./find_script.ps1 -sl 24
+
+powershell ./find_script.ps1 -tl .ps1
+
+powershell ./find_script.ps1 -cl hello
+
+powershell ./find_script.ps1 -dl dupfile.txt
+
+powershell ./find_script.ps1 -mvl movefile.txt ./movetodir/
+
+powershell ./find_script.ps1 -h

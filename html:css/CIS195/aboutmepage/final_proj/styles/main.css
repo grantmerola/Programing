@@ -1,0 +1,103 @@
+html{
+    background-color: #f8e8b6;
+}
+body{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Raleway, sans-serif;
+}
+
+header{
+    padding-top: 30px;
+}
+/* in header*/
+    #headdiv{
+       display: inline-block;
+    }
+    #headimg{
+        float: right;
+        height: 113px;
+    }
+
+
+nav{
+    border-bottom: solid black 1px;
+}
+/*in nav*/
+    nav ul{
+        list-style: none;
+        padding-left: 0px;
+    }
+    nav ul li{
+        display: inline-block;
+        margin-right: 5px;
+    }
+    nav ul li a{
+        text-decoration: none;
+        color: black;
+        display: block;
+        background-color: #a9946c;
+        padding: 8px;
+        border-radius: 3px;
+    }
+    nav ul li a:hover{
+        background-color: #e0d9cb;
+    }
+
+
+aside{
+    width: 300px;
+    float: right;
+    height: 300px
+}
+
+
+footer{
+    margin-top: 5px;
+    clear:right;
+    display: block;
+    text-align: center;
+    font-size: 7px;
+}
+footer p a{
+    text-decoration: none;
+}
+
+
+
+/* PAGE SPECIFIC*/
+/*Home*/
+section{
+    display: inline-block;
+    width:695px;
+}
+/*section*/
+    /*just for this page*/
+    blockquote{
+        display: inline-block;
+        width: 365px;
+    }
+    figure{
+        float:right;
+    }
+        /*in figure*/
+        #docimage{
+            height: 200px;
+        }
+        figcaption{
+            text-align: center;
+            font-size: 10pt;
+        }
+
+/*poss states*/
+section ul {    
+    list-style: square;
+}
+
+/*terra nul*/
+#terrasi{
+    float:left;
+}

@@ -1,0 +1,65 @@
+money
++-----------------+
+| Tables_in_money |
++-----------------+
+| accounts        |
+| categories      |
+| expenses        |
+| income          |
+| payment_type    |
+| person          |
++-----------------+
+
+money.accounts
++---------------------+------------------+------+-----+---------+----------------+
+| Field               | Type             | Null | Key | Default | Extra          |
++---------------------+------------------+------+-----+---------+----------------+
+| primary_key_account | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| account_id          | int(11)          | YES  |     | NULL    |                |
+| bank_name           | varchar(80)      | YES  |     | NULL    |                |
++---------------------+------------------+------+-----+---------+----------------+
+
+money.expenses
++--------------------+---------------------+------+-----+---------+----------------+
+| Field              | Type                | Null | Key | Default | Extra          |
++--------------------+---------------------+------+-----+---------+----------------+
+| purchase_id        | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| item_name          | varchar(160)        | YES  |     | NULL    |                |
+| secondary_name     | varchar(320)        | YES  |     | NULL    |                |
+| cost               | decimal(10,2)       | YES  |     | NULL    |                |
+| purchase_date      | date                | YES  |     | NULL    |                |
+| fk_payment_type_id | int(11)             | YES  |     | NULL    |                |
+| fk_categories_id   | int(11)             | YES  |     | NULL    |                |
+| fk_person_id       | int(11)             | YES  |     | NULL    |                |
++--------------------+---------------------+------+-----+---------+----------------+
+
+money.income
++----------------------------+------------------+------+-----+---------+----------------+
+| Field                      | Type             | Null | Key | Default | Extra          |
++----------------------------+------------------+------+-----+---------+----------------+
+| paycheck_id                | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| company_name               | varchar(80)      | YES  |     | NULL    |                |
+| ammount                    | decimal(10,2)    | YES  |     | NULL    |                |
+| before_deductions_paycheck | decimal(10,2)    | YES  |     | NULL    |                |
+| pay_range_start            | date             | YES  |     | NULL    |                |
+| pay_range_end              | date             | YES  |     | NULL    |                |
+| fk_person_id               | int(11)          | YES  |     | NULL    |                |
++----------------------------+------------------+------+-----+---------+----------------+
+
+money.payment_type
++-------------------+------------------+------+-----+---------+----------------+
+| Field             | Type             | Null | Key | Default | Extra          |
++-------------------+------------------+------+-----+---------+----------------+
+| payment_type_id   | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| payment_type_name | varchar(40)      | YES  |     | NULL    |                |
+| fk_account_id     | int(11)          | YES  |     | NULL    |                |
++-------------------+------------------+------+-----+---------+----------------+
+
+money.person
++-----------+------------------+------+-----+---------+----------------+
+| Field     | Type             | Null | Key | Default | Extra          |
++-----------+------------------+------+-----+---------+----------------+
+| person_id | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| name      | varchar(40)      | YES  |     | NULL    |                |
+| active    | tinyint(1)       | YES  |     | NULL    |                |
++-----------+------------------+------+-----+---------+----------------+
