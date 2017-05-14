@@ -29,18 +29,18 @@ a:active {
 }
 /*class css*/
 .content{
-	margin-right: 310px;
+	margin-left: 310px;
 }
 .sidebar{
-	padding: 5px;
-	border-left-style: solid;
-	border-left-width: 2px;
-	border-left-color: #B0BEC5;
+	padding: 10px;
+	border-right-style: solid;
+	border-right-width: 2px;
+	border-right-color: #B0BEC5;
 	background-color: #37474F;
 	position: fixed;
 	top: 0;
 	bottom: 0;
-	right: 0px;
+	left: 0px;
 	width: 300px;
 }
 /* id css*/
