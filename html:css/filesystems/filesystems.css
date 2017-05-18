@@ -10,11 +10,14 @@ ul{
 p{
 	font-size: 10pt;
 }
+hr{
+	margin: 5px;
+}
+/*link css */
 a:link {
     text-decoration: none;
     color: #90A4AE;
 }
-
 a:visited {
     text-decoration: none;
     color: #607D8B;
@@ -46,15 +49,6 @@ a:active {
 /* id css*/
 #infotag{
 	margin-bottom: 10px;
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-top-color: #B0BEC5;
-
-}
-#bottom_elm{
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-bottom-color: #B0BEC5;
 }
 
 /*defaults for mobile elms that change in resize*/
