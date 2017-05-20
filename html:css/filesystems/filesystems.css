@@ -1,8 +1,9 @@
 body{
-	background-color: #263238;
-	font-family: 'Source Code Pro', monospace;
-	font-size: 12pt;
-	color: #D2D7D9;
+	background-color: white;
+	/*font-family: 'Source Code Pro', monospace;*/
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 14pt;
+	color: black;
 }
 ul{
 	list-style-type: none;
@@ -16,11 +17,11 @@ hr{
 /*link css */
 a:link {
     text-decoration: none;
-    color: #90A4AE;
+    
 }
 a:visited {
     text-decoration: none;
-    color: #607D8B;
+    
 }
 
 a:hover {
@@ -33,13 +34,17 @@ a:active {
 /*class css*/
 .content{
 	margin-left: 310px;
+	padding: 20px;
+}
+.content > p{
+	font-size: 14pt;
 }
 .sidebar{
 	padding: 10px;
 	border-right-style: solid;
 	border-right-width: 2px;
 	border-right-color: #B0BEC5;
-	background-color: #37474F;
+	background-color: #e0e0e0;
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -47,6 +52,10 @@ a:active {
 	width: 300px;
 }
 /* id css*/
+#title{
+	text-decoration: none;
+	color: black;
+}
 #infotag{
 	margin-bottom: 10px;
 }
@@ -57,6 +66,12 @@ a:active {
 }
 #show_menu {
 	display: none;
+	position: fixed;
+	right: 0;
+}
+#title_for_mobile{
+	font-size: 0px;
+	margin-bottom: 0px;
 }
 /*mobile css*/
 @media screen and (max-width: 740px){
@@ -69,10 +84,14 @@ a:active {
 			display: none;
 		}
 	.content{
-		margin-right: 0px
+		margin-left: 0px
 	}
 	#show_menu_check:checked ~ .sidebar{
 			display: block;
+		}
+	#title_for_mobile{
+			font-size: 2em;
+
 		}
 	}
 
