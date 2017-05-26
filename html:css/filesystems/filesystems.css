@@ -4,6 +4,7 @@ body{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14pt;
 	color: black;
+	margin: 0px;
 }
 ul{
 	list-style-type: none;
@@ -61,6 +62,49 @@ a:active {
 }
 #infotag{
 	margin-bottom: 10px;
+}
+
+/* change background button*/
+#color_change[type=checkbox]{
+	display: none;
+}
+#dark_mode_on{
+	position: fixed;
+	right: 25px;
+}
+/* color changes made for dark mode*/
+#color_change:checked ~ .sidebar{
+	background-color: #616161;
+}
+#color_change:checked ~ .sidebar a:link{
+	color:#29B6F6 ;
+}
+#color_change:checked ~ .sidebar a:visited{
+	color: #424242;
+}
+#color_change:checked ~ .content{
+	background-color: black;
+	color: white;
+}
+#color_change:checked ~ .content a:link{
+	color:#29B6F6 ;
+}
+#color_change:checked ~ .content a:visited{
+	color: #424242;
+}
+#color_change:checked ~ .content img{
+	background-color: white;
+}
+/*custom color changes*/
+#color_change:checked ~ #title_for_mobile{
+	background-color: black;
+	color: white;
+}
+#color_change:checked ~ #show_menu{
+	color: white;
+}
+#color_change:checked ~ .sidebar #title{
+	color: black;
 }
 
 /*defaults for mobile elms that change in resize*/
