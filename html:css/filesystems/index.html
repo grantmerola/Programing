@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Filesystems</title><!--link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:300" rel="stylesheet"-->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600" rel="stylesheet" />
     <link href="filesystems.css" rel="stylesheet" type="text/css" />
     <meta content="width=device-width" name="viewport" />
   </head>
@@ -16,7 +16,91 @@
     <div class="content">
 <h3><a name="intro">Intro</a></h3>
 
-<p>Filesystems are all around us they permeate our computing lives, almost always invisible. Like all hidden infrastructure they are essential to the modern functioning of society. Although filesystems play such an important role they are often bundled up with conversations about Operating Systems(OS). Filesystems <em>are</em> tightly coupled with operating systems, often in diagrams they are <a href="http://www.tldp.org/LDP/sag/html/overview-kernel.png">shown</a> as part of the Kernel along with things like the Process, Network and Memory Mangers, however filesystems are(on most systems) interchangeable. Due to the modular nature of many OSs the filesystem can be swapped out depending on the users need and wants. </p>
+<p>Filesystems are all around us they permeate our computing lives, almost always invisible. Like all hidden infrastructure they are essential to the modern functioning of society. Although filesystems play such an important role they are often bundled up with conversations about Operating Systems(OS). Filesystems <em>are</em> tightly coupled with operating systems, often in diagrams they are <a href="http://www.tldp.org/LDP/sag/html/overview-kernel.png">shown</a> as part of the Kernel along with things like the Process, Network and Memory Managers, however filesystems are(on most systems) interchangeable. </p>
+
+<p>Due to the modular nature of many OSs the filesystem can be swapped out depending on the users need and wants. For instance some filesystems are fast others are reliable and other are highly compatible with other systems. This means that you may need to make a choice of filesystem to suit some specialized need, I hope to give you enough information so that you can know which features you need, and also a passing familiarity with some of the major filesystems.  </p>
+
+<h3><a name="what_is">What is a Filesystem?</a></h3>
+
+<p>Most users never know that the filesystem exists, this is partially by design the average user has no need to interact with the filesystem and the complexities contained within would cause more confusion. However most standard computers users have used the <a href="https://techterms.com/definition/gui">GUI</a> to interact with the filesystem, on Windows - File Explorer, and on macOS - Finder. The GUI provides an easy way to interact with the filesystem, the application can handle much of the formating and hide many of the complexities. </p>
+
+<h5><a name="trend">The progression of the filesystem</a></h5>
+
+<p>There is a trend worth noting of hiding direct file access in newer OSs. For example early OSs were tightly coupled with the file hierarchy mostly out of necessity due to the limited computing power. With the advent of the GUI OS the file hierarchy was still visible but was constrained by preordained GUI actions. But with some of the most recent mobile OSs, notably iOS, the filesystem has all but disappeared. Android takes a more measured approach and still has a file viewer but files are clearly second class citizens. This was done so as to avoid many/all of the complexities of filesystems, however there were different complexities introduced as a byproduct of this shift away from the file system. Whether this shift is for better or worse still remains to be seen, more likely than not one devil has been traded for another. Regardless the filesystem will remain important in the internals and technical people will still need to interact with it. </p>
+
+<p>So at a macro scale a filesystem is something the user interacts with to manage files, directly or indirectly. But for an audience of the technical this is not sufficient or interesting. So as literally as possible what is(or perhaps more accurately) what composes an filesystem? Let's start at the bottom and work our way up. </p>
+
+<h5><a name="hardware">Hardware</a></h5>
+
+<p>At the bottom is bits,(as hopefully you know) everything in a computer is made of bits. Information can be <a href="https://www.w3.org/International/questions/qa-what-is-encoding">stored</a> in bits, for instance a file is a collection of bits.</p>
+
+<p>But where are the bits, things don't <strong>just</strong> exist?
+The bits exist in long term storage on the disk, also in <a href="https://techterms.com/definition/ram">RAM</a> but since filesystems primarily deal with the disk we will only cover that. A Hard Drive Disk uses <a href="http://ffden-2.phys.uaf.edu/211.fall2000.web.projects/J%20Kugler/magnetic.html">magnetic storage</a> to store information, the disk is divided up into:</p>
+
+<ul>
+<li><strong>Platters</strong> - Platters are the actual disks that are on the are in the drive, there may be more than one per drive casing </li>
+<li><strong><a href="http://www.ntfs.com/hard-disk-basics.htm#MakingTracks">Tracks</a></strong> - Tracks are rings on the disks where data is stored, there are thousands of tracks on a platter.</li>
+<li><strong><a href="http://www.ntfs.com/hard-disk-basics.htm#SectorsandClusters">Clusters</a></strong> - Clusters are simply a collection of Sectors, because sectors are small Clusters allow us to talk about larger chunks of data.</li>
+<li><strong><a href="http://www.ntfs.com/hard-disk-basics.htm#SectorsandClusters">Sectors</a></strong> - Sectors are the smallest unit of data that can be dealt with on the disk, they are usually 512 bytes.</li>
+</ul>
+
+<p><img src="https://spectressite.files.wordpress.com/2015/12/disk-structure.png?w=616" alt="alt text" title="" /></p>
+
+<p>All these different constructs of size help the disk software stack manage the disk.</p>
+
+<p><strong>So a Filesystem is a way for the user and system idea of a file to be translated down into the hardware reality of Sectors and Clusters; It is a mapping from software to hardware.</strong></p>
+
+<h3><a name="FAT">FAT</a></h3>
+
+<p>FAT or <strong>F</strong>ile <strong>A</strong>llocation <strong>T</strong>able was <a href="https://staff.washington.edu/dittrich/misc/fatgen103.pdf#page=1">developed</a> by Microsoft in the 1970, and although it is not the <a href="https://softwareengineering.stackexchange.com/questions/103487/what-was-the-first-hierarchical-file-system">oldest</a> file system, it is by far the one of the most used especially for its age. FAT was originally used in Windows/DOS for many years and is still used today as the default filesystem on <a href="http://read.pudn.com/downloads77/ebook/294884/FAT32%20Spec%20%28SDA%20Contribution%29.pdf#page=1">SD cards</a> and most USB flash drives. We will use FAT to talk about filesystem basics. </p>
+
+<h5><a name="fat_versions">Versions of FAT</a></h5>
+
+<p>There are many different versions of FAT, the first published version of FAT, FAT12, the 12 <a href="http://www.dfists.ua.es/~gil/FAT12Description.pdf#page=1">denoting</a> the use of 12 bit entries. Later other versions of FAT were released, FAT16, FAT32 and exFAT. Each of these successive versions increased the features and abilities of the FAT file system. The bit size often limits thing like max file size, max file name length and max disk size. exFAT would eventually practically solve most of these problems, but constant throughout is the file allocation table which is the basic data structure that filesystem is based and named after. </p>
+
+<h5><a name="fat_datastructure">File Allocation Table</a></h5>
+
+<p>The file allocation table(will be referred to  as 'fat' <strong>not</strong> 'FAT' indicating the filesystem) is a simple data structure that is relatively easily mapped to the disk hardware reality, although other filesystems do not use the fat model directly, the data structures that are used are based on similar principles and understanding fat's will you to understand the concepts without having to know many of the implementation specific structures.</p>
+
+<p>Before we can dig into how fats work let's briefly talk about pointers. Pointers are a incredibly common structure that often directly interact with control software. If we think about computers as series of ones and zeros(<a href="https://en.wikipedia.org/wiki/Turing_machine">they actually are</a>) all a pointer does is point at a to a place in that series, tying together the name of the pointer and a location.</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Pointers.svg" alt="alt text" title="" /></p>
+
+<p>So a fat is a bunch of named pointers; a name of a file or a directory <em>points</em> to a place on the disk. Or more accurately in the case of a file it points to a cluster remember a cluster is a usable chunk of data made up of 512 byte sectors.</p>
+
+<p>What if the file is 2KB? No problem just point at beginning of the file cluster and just read the sectors sequentially until we fill up to the known file size and hopefully at the same time find a special marker at the end that confirms the end of the file. </p>
+
+<p>But what if we want to edit a file? Well if you want to make the file smaller no problem just change your size and update the end marker. However if you want to make a file larger things get tricky. You see when you first wrote your file the next file that was written was placed immediately after it for performance reasons. So we could move that file to new territory and just rewrite it in its full length and this isn't a bad idea it is slow because you have to rewrite the whole file in this new location which could take a while depending on the length of the file. So something clever is done, the file is broken into chunks that are <a href="https://staff.washington.edu/dittrich/misc/fatgen103.pdf#page=13">linked</a> together via pointers. Although it will still take the disk a while to find the next cluster when reading, it is faster when the disk needs to read and write often. However if you use this model for to long then even small files can be fragmented over large section of the disk, it is then necessary to <a href="https://en.wikipedia.org/wiki/Defragmentation">defragment</a> the drive by rewriting file files to be in continuous clusters.</p>
+
+<p><img src="http://www.ntfs.com/images/recover-FAT-structure.gif" alt="alt text" title="" /></p>
+
+<h5><a name="fat_problems">Problems with FAT</a></h5>
+
+<p>FAT is old and relatively simple, there number of things that are lacking in the feature department. Many of the things that are now considered normal filesystem features were not even considered in the initial design of FAT, such as compression or encryption. Later many of these features were added in, but most were dirty hacks because the filesystem was never designed for it and backward compatibility was a goal. For instance name length may be the best example of this, when the filesystem was first introduced the name size was very small, but was expanded in later versions. However in later versions to keep backward compatibility this feature was implemented as a <a href="https://staff.washington.edu/dittrich/misc/fatgen103.pdf#page=28">hack</a>. </p>
+
+<p>Another example of a missing features is <a href="#data_integrity"><strong>Data Integrity</strong></a>, many filesystems may take steps to insure that your data is safe often at the cost of speed or space efficiency. FAT at first didn't do anything, but eventually implemented a feature where copy of the fat would be made occasionally and stored. So that at the very least if the fat was corrupted, an unlikely but potentially causing complete data loss, the filesystem could be restored to that point in time and only some files would be lost. As you can imagine this is not a great system, what if data was corrupted but didn't cause problems for a long time, causing the backups to be corrupted too. Or what if it had been a while since a copy of the fat had been made all that new work is gone. And this doesn't help at all is the integrity of the file contents, arguably the more important stuff. </p>
+
+<h5><a name="fat_relevancy"> FAT's Relevancy Today </a></h5>
+
+<p>Although Fat lacks many features that doesn't make it bad or even useless filesystem. As all filesystems do, FAT makes trade offs. Trade offs for speed and storage size at the cost of many features. These trade offs made more sense in a time of much more limited computing power and storage space. But today with our <a href="https://techterms.com/definition/gigahertz">GHz</a> processors and <a href="https://techterms.com/definition/terabyte">TB</a> hard drives, the trade offs that FAT made make far less sense today. However FAT is sill used today in some low power computing environments because the trade offs it make are worth it. It is also worth noting that the backward compatible nature of FAT make is at popular file interchange format between other filesystems.</p>
+
+<h3><a name="ZFS">ZFS</a></h3>
+
+<p>ZFS is a filesystem <a href="http://open-zfs.org/wiki/History">developed</a> in the early 2000's by Sun Microsystems it original use was in the Solaris OS. But it has taken on life of it's own on the open source community under the <a href="http://open-zfs.org/">OpenZFS project</a>. In every way FAT is simple and lacking features ZFS is not. ZFS is often considered the gold standard for filesystems and although best is a deeply subjective measure, few would disagree that ZFS is an interesting and featureful filesystem.</p>
+
+<p>ZFS has very different <a href="http://queue.acm.org/detail.cfm?id=1317400">goals</a>: </p>
+
+<ol>
+<li><a href="#pools"><strong>Simple Storage Management</strong></a></li>
+<li><a href="#data_integrity"><strong>Data Integrity</strong></a> </li>
+<li>Performance</li>
+</ol>
+
+<p>At scale.</p>
+
+<h5><a name="pools">ZFS Storage Pools</a></h5>
+
+<p>A more traditional filesystem has clear boundary especially down toward the hardware stack, usually they reach a point and then just hand over to the hardware stack. But ZFS in it effort to simplify storage management creates <a href="http://docs.oracle.com/cd/E26505_01/html/E37384/zfsover-2.html#gaypk">pools</a> of disks. A pool is just a collection of disk that are manage by the system inse    </p>
     </div>
     <div class="sidebar">
       <h1>
@@ -32,6 +116,37 @@
       <ol>
         <li>
           <a href="#intro">Intro</a>
+        </li>
+        <li>
+          <a href="#what_is">What is a Filesystem?</a>
+          <ol>
+            <li>
+              <a href="#trend">The Progression of the Filesystem</a>
+            </li>
+            <li>
+              <a href="#hardware">Hardware</a>
+            </li>
+            <li>
+              <a href="#FAT">FAT</a>
+              <ol>
+                <li>
+                  <a href="#fat_versions">Versions of FAT</a>
+                </li>
+                <li>
+                  <a href="#fat_datastructure">File Allocation Table</a>
+                </li>
+                <li>
+                  <a href="#fat_problems">Problems with FAT</a>
+                </li>
+                <li>
+                  <a href="#fat_relevancy">FAT's Relevancy Today</a>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="#ZFS">ZFS</a>
         </li>
       </ol>
       <h4 id="infotag">
