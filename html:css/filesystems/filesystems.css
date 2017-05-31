@@ -1,6 +1,5 @@
 body{
 	background-color: white;
-	/*font-family: 'Source Code Pro', monospace;*/
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14pt;
 	color: black;
@@ -10,7 +9,7 @@ ul{
 	list-style-type: none;
 }
 p{
-	font-size: 10pt;
+	font-size: 14pt;
 }
 h5{
 	margin: 5px;
@@ -21,28 +20,22 @@ hr{
 /*link css */
 a:link {
     text-decoration: none;
-    
 }
 a:visited {
-    text-decoration: none;
-    
+    text-decoration: none;   
+    color: purple; 
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-a:active {
-    text-decoration: underline;
-}
 /*class css*/
 .content{
 	margin-left: 310px;
 	padding: 20px;
 }
-.content > p{
-	font-size: 14pt;
-}
+
 .sidebar{
 	padding: 10px;
 	border-right-style: solid;
@@ -54,14 +47,16 @@ a:active {
 	bottom: 0;
 	left: 0px;
 	width: 300px;
+	overflow: scroll;
 }
 /* id css*/
 #title{
 	text-decoration: none;
 	color: black;
 }
-#infotag{
-	margin-bottom: 10px;
+#table_of_contents{
+	height: 350px;
+	overflow: scroll;
 }
 
 /* change background button*/
