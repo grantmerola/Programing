@@ -1,14 +1,24 @@
 """ The contents of this file are imported in to IPython on start up. It is a collection of aliases and ease of use functions."""
 import yaml
+
+from IPython.terminal.prompts import Prompts, Token
 import os
-def sh(str):
-	"""Alias for shell command """
-	os.system(str)
+
+class MyPrompt(Prompts):
+	def in_prompt_tokens(self, cli=None):
+		return [(Token.Prompt, os.getcwd()),
+				(Token.Prompt, '- : ')]
+	def out_prompt_tokens(self):
+		return [(Token.OutPrompt, '[Returned]: ')]	
+
+ipyobj = get_ipython()
+ipyobj.prompts = MyPrompt(ipyobj)
+ipyobj.magic("rehashx") 
 
 def lookforbadchar(str):
 	""" Looks for non A-Z and 0-9 chars """
 	strarr = list(str)
-	for char, i in enumerate(strarr):
+	for i, char in enumerate(strarr):
 		# gets the ascii value 
 		charcode = ord(char)
 		#65-90 A-Z,97-122 a-z,48-57 0-9, 32 = space: in ASCII 
